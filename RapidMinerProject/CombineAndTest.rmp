@@ -21,14 +21,14 @@
         <list key="set_additional_roles"/>
       </operator>
       <operator activated="true" class="retrieve" compatibility="7.6.001" expanded="true" height="68" name="Retrieve Prod" width="90" x="45" y="187">
-        <parameter key="repository_entry" value="//Paul/models/production_model"/>
+        <parameter key="repository_entry" value="//CMSC435Project/models/production_model"/>
       </operator>
       <operator activated="true" class="apply_model" compatibility="7.6.001" expanded="true" height="82" name="Apply Model (4)" width="90" x="179" y="187">
         <list key="application_parameters"/>
         <parameter key="create_view" value="false"/>
       </operator>
       <operator activated="true" class="retrieve" compatibility="7.6.001" expanded="true" height="68" name="Retrieve Pur" width="90" x="45" y="340">
-        <parameter key="repository_entry" value="//Paul/models/purification_model"/>
+        <parameter key="repository_entry" value="//CMSC435Project/models/purification_model"/>
       </operator>
       <operator activated="true" class="select_attributes" compatibility="7.6.001" expanded="true" height="82" name="Remove confidence" width="90" x="313" y="187">
         <parameter key="attribute_filter_type" value="regular_expression"/>
@@ -85,7 +85,7 @@
         <parameter key="filters_check_metadata" value="true"/>
       </operator>
       <operator activated="true" class="retrieve" compatibility="7.6.001" expanded="true" height="68" name="Retrive Cryst" width="90" x="45" y="442">
-        <parameter key="repository_entry" value="//Paul/models/crystalize_model"/>
+        <parameter key="repository_entry" value="//CMSC435Project/models/crystalize_model"/>
       </operator>
       <operator activated="true" class="apply_model" compatibility="7.6.001" expanded="true" height="82" name="Apply Model (3)" width="90" x="179" y="442">
         <list key="application_parameters"/>
