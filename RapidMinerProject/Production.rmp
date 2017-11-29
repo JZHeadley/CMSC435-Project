@@ -154,7 +154,7 @@
             <list key="application_parameters"/>
             <parameter key="create_view" value="false"/>
           </operator>
-          <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="Production performance" width="90" x="246" y="34">
+          <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="LogReg" width="90" x="246" y="34">
             <parameter key="main_criterion" value="first"/>
             <parameter key="accuracy" value="true"/>
             <parameter key="classification_error" value="false"/>
@@ -183,8 +183,8 @@
           </operator>
           <connect from_port="model" to_op="Apply Model (3)" to_port="model"/>
           <connect from_port="test set" to_op="Apply Model (3)" to_port="unlabelled data"/>
-          <connect from_op="Apply Model (3)" from_port="labelled data" to_op="Production performance" to_port="labelled data"/>
-          <connect from_op="Production performance" from_port="performance" to_port="performance 1"/>
+          <connect from_op="Apply Model (3)" from_port="labelled data" to_op="LogReg" to_port="labelled data"/>
+          <connect from_op="LogReg" from_port="performance" to_port="performance 1"/>
           <portSpacing port="source_model" spacing="0"/>
           <portSpacing port="source_test set" spacing="0"/>
           <portSpacing port="source_through 1" spacing="0"/>
@@ -224,7 +224,7 @@
             <list key="application_parameters"/>
             <parameter key="create_view" value="false"/>
           </operator>
-          <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="Rule Cryst Perf" width="90" x="246" y="34">
+          <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="Rule Perf" width="90" x="246" y="34">
             <parameter key="main_criterion" value="first"/>
             <parameter key="accuracy" value="true"/>
             <parameter key="classification_error" value="false"/>
@@ -253,8 +253,8 @@
           </operator>
           <connect from_port="model" to_op="Apply Model (2)" to_port="model"/>
           <connect from_port="test set" to_op="Apply Model (2)" to_port="unlabelled data"/>
-          <connect from_op="Apply Model (2)" from_port="labelled data" to_op="Rule Cryst Perf" to_port="labelled data"/>
-          <connect from_op="Rule Cryst Perf" from_port="performance" to_port="performance 1"/>
+          <connect from_op="Apply Model (2)" from_port="labelled data" to_op="Rule Perf" to_port="labelled data"/>
+          <connect from_op="Rule Perf" from_port="performance" to_port="performance 1"/>
           <portSpacing port="source_model" spacing="0"/>
           <portSpacing port="source_test set" spacing="0"/>
           <portSpacing port="source_through 1" spacing="0"/>

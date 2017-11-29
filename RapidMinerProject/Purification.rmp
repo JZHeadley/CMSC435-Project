@@ -110,16 +110,26 @@
         <parameter key="local_random_seed" value="1992"/>
         <parameter key="enable_parallel_execution" value="true"/>
         <process expanded="true">
-          <operator activated="true" class="rule_induction" compatibility="7.6.001" expanded="true" height="82" name="Rule Induction" width="90" x="112" y="34">
-            <parameter key="criterion" value="information_gain"/>
-            <parameter key="sample_ratio" value="0.9"/>
-            <parameter key="pureness" value="0.9"/>
-            <parameter key="minimal_prune_benefit" value="0.25"/>
-            <parameter key="use_local_random_seed" value="false"/>
-            <parameter key="local_random_seed" value="1992"/>
+          <operator activated="true" class="logistic_regression" compatibility="7.6.001" expanded="true" height="103" name="Logistic Regression (SVM)" width="90" x="112" y="34">
+            <parameter key="kernel_type" value="dot"/>
+            <parameter key="kernel_gamma" value="1.0"/>
+            <parameter key="kernel_sigma1" value="1.0"/>
+            <parameter key="kernel_sigma2" value="0.0"/>
+            <parameter key="kernel_sigma3" value="2.0"/>
+            <parameter key="kernel_shift" value="1.0"/>
+            <parameter key="kernel_degree" value="2.0"/>
+            <parameter key="kernel_a" value="1.0"/>
+            <parameter key="kernel_b" value="0.0"/>
+            <parameter key="kernel_cache" value="200"/>
+            <parameter key="C" value="1.0"/>
+            <parameter key="convergence_epsilon" value="0.001"/>
+            <parameter key="max_iterations" value="100000"/>
+            <parameter key="scale" value="true"/>
+            <parameter key="calculate_weights" value="true"/>
+            <parameter key="return_optimization_performance" value="true"/>
           </operator>
-          <connect from_port="training set" to_op="Rule Induction" to_port="training set"/>
-          <connect from_op="Rule Induction" from_port="model" to_port="model"/>
+          <connect from_port="training set" to_op="Logistic Regression (SVM)" to_port="training set"/>
+          <connect from_op="Logistic Regression (SVM)" from_port="model" to_port="model"/>
           <portSpacing port="source_training set" spacing="0"/>
           <portSpacing port="sink_model" spacing="0"/>
           <portSpacing port="sink_through 1" spacing="0"/>
@@ -129,7 +139,7 @@
             <list key="application_parameters"/>
             <parameter key="create_view" value="false"/>
           </operator>
-          <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="Rule Pur Perf" width="90" x="246" y="34">
+          <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="LogSVM Pur Perf" width="90" x="246" y="34">
             <parameter key="main_criterion" value="first"/>
             <parameter key="accuracy" value="true"/>
             <parameter key="classification_error" value="false"/>
@@ -158,8 +168,8 @@
           </operator>
           <connect from_port="model" to_op="Apply Model (3)" to_port="model"/>
           <connect from_port="test set" to_op="Apply Model (3)" to_port="unlabelled data"/>
-          <connect from_op="Apply Model (3)" from_port="labelled data" to_op="Rule Pur Perf" to_port="labelled data"/>
-          <connect from_op="Rule Pur Perf" from_port="performance" to_port="performance 1"/>
+          <connect from_op="Apply Model (3)" from_port="labelled data" to_op="LogSVM Pur Perf" to_port="labelled data"/>
+          <connect from_op="LogSVM Pur Perf" from_port="performance" to_port="performance 1"/>
           <portSpacing port="source_model" spacing="0"/>
           <portSpacing port="source_test set" spacing="0"/>
           <portSpacing port="source_through 1" spacing="0"/>
@@ -208,7 +218,7 @@
             <list key="application_parameters"/>
             <parameter key="create_view" value="false"/>
           </operator>
-          <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="Purification Performance" width="90" x="246" y="34">
+          <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="Purification Log Perf" width="90" x="246" y="34">
             <parameter key="main_criterion" value="first"/>
             <parameter key="accuracy" value="true"/>
             <parameter key="classification_error" value="false"/>
@@ -237,8 +247,8 @@
           </operator>
           <connect from_port="model" to_op="Apply Model (2)" to_port="model"/>
           <connect from_port="test set" to_op="Apply Model (2)" to_port="unlabelled data"/>
-          <connect from_op="Apply Model (2)" from_port="labelled data" to_op="Purification Performance" to_port="labelled data"/>
-          <connect from_op="Purification Performance" from_port="performance" to_port="performance 1"/>
+          <connect from_op="Apply Model (2)" from_port="labelled data" to_op="Purification Log Perf" to_port="labelled data"/>
+          <connect from_op="Purification Log Perf" from_port="performance" to_port="performance 1"/>
           <portSpacing port="source_model" spacing="0"/>
           <portSpacing port="source_test set" spacing="0"/>
           <portSpacing port="source_through 1" spacing="0"/>
@@ -260,8 +270,8 @@
       <connect from_op="Multiply" from_port="output 1" to_op="Purification Model" to_port="example set"/>
       <connect from_op="Multiply" from_port="output 2" to_port="result 3"/>
       <connect from_op="Multiply" from_port="output 3" to_op="Crystalize Model (2)" to_port="example set"/>
-      <connect from_op="Crystalize Model (2)" from_port="model" to_port="result 4"/>
-      <connect from_op="Purification Model" from_port="model" to_op="Store (2)" to_port="input"/>
+      <connect from_op="Crystalize Model (2)" from_port="model" to_op="Store (2)" to_port="input"/>
+      <connect from_op="Crystalize Model (2)" from_port="performance 1" to_port="result 4"/>
       <connect from_op="Purification Model" from_port="example set" to_port="result 2"/>
       <connect from_op="Purification Model" from_port="performance 1" to_port="result 1"/>
       <portSpacing port="source_input 1" spacing="0"/>
