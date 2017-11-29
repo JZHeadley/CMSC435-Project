@@ -100,7 +100,74 @@
         <parameter key="replace_what" value="zero"/>
         <parameter key="replace_by" value="one"/>
       </operator>
-      <operator activated="true" class="multiply" compatibility="7.6.001" expanded="true" height="124" name="Multiply" width="90" x="380" y="85"/>
+      <operator activated="true" class="multiply" compatibility="7.6.001" expanded="true" height="145" name="Multiply" width="90" x="380" y="85"/>
+      <operator activated="true" class="concurrency:cross_validation" compatibility="7.6.001" expanded="true" height="145" name="Rules" width="90" x="514" y="391">
+        <parameter key="split_on_batch_attribute" value="false"/>
+        <parameter key="leave_one_out" value="false"/>
+        <parameter key="number_of_folds" value="5"/>
+        <parameter key="sampling_type" value="automatic"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+        <parameter key="enable_parallel_execution" value="true"/>
+        <process expanded="true">
+          <operator activated="true" class="rule_induction" compatibility="7.6.001" expanded="true" height="82" name="Rule Induction" width="90" x="112" y="34">
+            <parameter key="criterion" value="information_gain"/>
+            <parameter key="sample_ratio" value="0.9"/>
+            <parameter key="pureness" value="0.9"/>
+            <parameter key="minimal_prune_benefit" value="0.25"/>
+            <parameter key="use_local_random_seed" value="false"/>
+            <parameter key="local_random_seed" value="1992"/>
+          </operator>
+          <connect from_port="training set" to_op="Rule Induction" to_port="training set"/>
+          <connect from_op="Rule Induction" from_port="model" to_port="model"/>
+          <portSpacing port="source_training set" spacing="0"/>
+          <portSpacing port="sink_model" spacing="0"/>
+          <portSpacing port="sink_through 1" spacing="0"/>
+        </process>
+        <process expanded="true">
+          <operator activated="true" class="apply_model" compatibility="7.6.001" expanded="true" height="82" name="Apply Model (4)" width="90" x="112" y="34">
+            <list key="application_parameters"/>
+            <parameter key="create_view" value="false"/>
+          </operator>
+          <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="Rule Cryst Perf" width="90" x="246" y="34">
+            <parameter key="main_criterion" value="first"/>
+            <parameter key="accuracy" value="true"/>
+            <parameter key="classification_error" value="false"/>
+            <parameter key="kappa" value="false"/>
+            <parameter key="weighted_mean_recall" value="false"/>
+            <parameter key="weighted_mean_precision" value="false"/>
+            <parameter key="spearman_rho" value="false"/>
+            <parameter key="kendall_tau" value="false"/>
+            <parameter key="absolute_error" value="false"/>
+            <parameter key="relative_error" value="false"/>
+            <parameter key="relative_error_lenient" value="false"/>
+            <parameter key="relative_error_strict" value="false"/>
+            <parameter key="normalized_absolute_error" value="false"/>
+            <parameter key="root_mean_squared_error" value="false"/>
+            <parameter key="root_relative_squared_error" value="false"/>
+            <parameter key="squared_error" value="false"/>
+            <parameter key="correlation" value="false"/>
+            <parameter key="squared_correlation" value="false"/>
+            <parameter key="cross-entropy" value="false"/>
+            <parameter key="margin" value="false"/>
+            <parameter key="soft_margin_loss" value="false"/>
+            <parameter key="logistic_loss" value="false"/>
+            <parameter key="skip_undefined_labels" value="true"/>
+            <parameter key="use_example_weights" value="true"/>
+            <list key="class_weights"/>
+          </operator>
+          <connect from_port="model" to_op="Apply Model (4)" to_port="model"/>
+          <connect from_port="test set" to_op="Apply Model (4)" to_port="unlabelled data"/>
+          <connect from_op="Apply Model (4)" from_port="labelled data" to_op="Rule Cryst Perf" to_port="labelled data"/>
+          <connect from_op="Rule Cryst Perf" from_port="performance" to_port="performance 1"/>
+          <portSpacing port="source_model" spacing="0"/>
+          <portSpacing port="source_test set" spacing="0"/>
+          <portSpacing port="source_through 1" spacing="0"/>
+          <portSpacing port="sink_test set results" spacing="0"/>
+          <portSpacing port="sink_performance 1" spacing="0"/>
+          <portSpacing port="sink_performance 2" spacing="0"/>
+        </process>
+      </operator>
       <operator activated="true" class="concurrency:cross_validation" compatibility="7.6.001" expanded="true" height="145" name="Crystalize Model (2)" width="90" x="514" y="238">
         <parameter key="split_on_batch_attribute" value="false"/>
         <parameter key="leave_one_out" value="false"/>
@@ -270,7 +337,9 @@
       <connect from_op="Multiply" from_port="output 1" to_op="Purification Model" to_port="example set"/>
       <connect from_op="Multiply" from_port="output 2" to_port="result 3"/>
       <connect from_op="Multiply" from_port="output 3" to_op="Crystalize Model (2)" to_port="example set"/>
-      <connect from_op="Crystalize Model (2)" from_port="model" to_op="Store (2)" to_port="input"/>
+      <connect from_op="Multiply" from_port="output 4" to_op="Rules" to_port="example set"/>
+      <connect from_op="Rules" from_port="model" to_op="Store (2)" to_port="input"/>
+      <connect from_op="Rules" from_port="performance 1" to_port="result 5"/>
       <connect from_op="Crystalize Model (2)" from_port="performance 1" to_port="result 4"/>
       <connect from_op="Purification Model" from_port="example set" to_port="result 2"/>
       <connect from_op="Purification Model" from_port="performance 1" to_port="result 1"/>
@@ -280,6 +349,7 @@
       <portSpacing port="sink_result 3" spacing="0"/>
       <portSpacing port="sink_result 4" spacing="0"/>
       <portSpacing port="sink_result 5" spacing="0"/>
+      <portSpacing port="sink_result 6" spacing="0"/>
     </process>
   </operator>
 </process>

@@ -138,6 +138,7 @@
         <parameter key="use_example_weights" value="true"/>
         <list key="class_weights"/>
       </operator>
+      <operator activated="true" class="multiply" compatibility="7.6.001" expanded="true" height="68" name="Multiply" width="90" x="715" y="136"/>
       <connect from_op="Retrieve Data" from_port="output" to_op="Set Role (2)" to_port="example set input"/>
       <connect from_op="Set Role (2)" from_port="example set output" to_op="Apply Model (4)" to_port="unlabelled data"/>
       <connect from_op="Retrieve Prod" from_port="output" to_op="Apply Model (4)" to_port="model"/>
