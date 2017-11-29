@@ -60,7 +60,7 @@
         <parameter key="invert_selection" value="true"/>
         <parameter key="include_special_attributes" value="false"/>
       </operator>
-      <operator activated="false" class="remove_correlated_attributes" compatibility="7.6.001" expanded="true" height="82" name="Remove Correlated Attributes" width="90" x="313" y="391">
+      <operator activated="true" class="remove_correlated_attributes" compatibility="7.6.001" expanded="true" height="82" name="Remove Correlated Attributes" width="90" x="313" y="391">
         <parameter key="correlation" value="0.5"/>
         <parameter key="filter_relation" value="greater"/>
         <parameter key="attribute_order" value="original"/>
@@ -189,7 +189,7 @@
       <operator activated="true" class="concurrency:cross_validation" compatibility="7.6.001" expanded="true" height="145" name="3-fold (3)" width="90" x="648" y="34">
         <parameter key="split_on_batch_attribute" value="false"/>
         <parameter key="leave_one_out" value="false"/>
-        <parameter key="number_of_folds" value="3"/>
+        <parameter key="number_of_folds" value="5"/>
         <parameter key="sampling_type" value="automatic"/>
         <parameter key="use_local_random_seed" value="false"/>
         <parameter key="local_random_seed" value="1992"/>
@@ -341,7 +341,7 @@
       <operator activated="true" class="concurrency:cross_validation" compatibility="7.6.001" expanded="true" height="145" name="3-fold (2)" width="90" x="782" y="187">
         <parameter key="split_on_batch_attribute" value="false"/>
         <parameter key="leave_one_out" value="false"/>
-        <parameter key="number_of_folds" value="3"/>
+        <parameter key="number_of_folds" value="5"/>
         <parameter key="sampling_type" value="automatic"/>
         <parameter key="use_local_random_seed" value="false"/>
         <parameter key="local_random_seed" value="1992"/>
@@ -421,7 +421,8 @@
       <connect from_op="Retrieve" from_port="output" to_op="Set Role (2)" to_port="example set input"/>
       <connect from_op="Set Role (2)" from_port="example set output" to_op="Select" to_port="example set input"/>
       <connect from_op="Set Role (2)" from_port="original" to_port="result 3"/>
-      <connect from_op="Select" from_port="example set output" to_op="Multiply" to_port="input"/>
+      <connect from_op="Select" from_port="example set output" to_op="Remove Correlated Attributes" to_port="example set input"/>
+      <connect from_op="Remove Correlated Attributes" from_port="example set output" to_op="Multiply" to_port="input"/>
       <connect from_op="Multiply" from_port="output 1" to_op="Remove zeros" to_port="example set input"/>
       <connect from_op="Multiply" from_port="output 2" to_port="result 4"/>
       <connect from_op="Remove zeros" from_port="example set output" to_op="Remove ones" to_port="example set input"/>
@@ -431,7 +432,7 @@
       <connect from_op="Remove ones" from_port="original" to_op="Replace 3-&gt;2" to_port="example set input"/>
       <connect from_op="Replace 3-&gt;2" from_port="example set output" to_op="Replace 0-&gt;1" to_port="example set input"/>
       <connect from_op="Replace 0-&gt;2" from_port="example set output" to_op="Replace 1-&gt;2" to_port="example set input"/>
-      <connect from_op="Replace 0-&gt;1" from_port="example set output" to_op="Multiply (2)" to_port="input"/>
+      <connect from_op="Replace 1-&gt;2" from_port="example set output" to_op="Multiply (2)" to_port="input"/>
       <connect from_op="Multiply (2)" from_port="output 1" to_op="3-fold (2)" to_port="example set"/>
       <connect from_op="Multiply (2)" from_port="output 2" to_op="3-fold" to_port="example set"/>
       <connect from_op="Multiply (2)" from_port="output 3" to_op="3-fold (3)" to_port="example set"/>
