@@ -156,11 +156,9 @@
       <connect from_op="Remove confidence (3)" from_port="example set output" to_op="Append" to_port="example set 3"/>
       <connect from_op="Append" from_port="merged set" to_op="Performance" to_port="labelled data"/>
       <connect from_op="Performance" from_port="performance" to_port="result 1"/>
-      <connect from_op="Performance" from_port="example set" to_port="result 2"/>
       <portSpacing port="source_input 1" spacing="0"/>
       <portSpacing port="sink_result 1" spacing="0"/>
       <portSpacing port="sink_result 2" spacing="0"/>
-      <portSpacing port="sink_result 3" spacing="0"/>
     </process>
   </operator>
 </process>

@@ -28,7 +28,7 @@
         </enumeration>
         <parameter key="sampling_type" value="automatic"/>
         <parameter key="use_local_random_seed" value="true"/>
-        <parameter key="local_random_seed" value="2"/>
+        <parameter key="local_random_seed" value="2007"/>
       </operator>
       <operator activated="true" class="store" compatibility="7.6.001" expanded="true" height="68" name="Store (3)" width="90" x="380" y="136">
         <parameter key="repository_entry" value="data/train9"/>
