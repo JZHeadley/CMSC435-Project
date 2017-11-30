@@ -13,7 +13,7 @@
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
       <operator activated="true" class="retrieve" compatibility="7.6.001" expanded="true" height="68" name="Retrieve" width="90" x="45" y="544">
-        <parameter key="repository_entry" value="data/train9"/>
+        <parameter key="repository_entry" value="data/train8"/>
       </operator>
       <operator activated="true" class="set_role" compatibility="7.6.001" expanded="true" height="82" name="Set Role (2)" width="90" x="45" y="442">
         <parameter key="attribute_name" value="class"/>
