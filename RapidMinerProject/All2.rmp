@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="7.6.001">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="7.6.001" expanded="true" name="Process">
+    <parameter key="logverbosity" value="status"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="for_long_processes"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="retrieve" compatibility="7.6.001" expanded="true" height="68" name="Retrieve" width="90" x="45" y="544">
+        <parameter key="repository_entry" value="data/training"/>
+      </operator>
+      <operator activated="true" class="set_role" compatibility="7.6.001" expanded="true" height="82" name="Set Role (2)" width="90" x="45" y="442">
+        <parameter key="attribute_name" value="class"/>
+        <parameter key="target_role" value="label"/>
+        <list key="set_additional_roles"/>
+      </operator>
+      <operator activated="false" class="select_attributes" compatibility="7.6.001" expanded="true" height="82" name="Select (2)" width="90" x="246" y="544">
+        <parameter key="attribute_filter_type" value="regular_expression"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="regular_expression" value="AAcomp_.."/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="true"/>
+        <parameter key="include_special_attributes" value="false"/>
+      </operator>
+      <operator activated="false" class="remove_correlated_attributes" compatibility="7.6.001" expanded="true" height="82" name="Remove Correlated Attributes" width="90" x="179" y="340">
+        <parameter key="correlation" value="0.5"/>
+        <parameter key="filter_relation" value="greater"/>
+        <parameter key="attribute_order" value="original"/>
+        <parameter key="use_absolute_correlation" value="true"/>
+        <parameter key="use_local_random_seed" value="true"/>
+        <parameter key="local_random_seed" value="1993"/>
+      </operator>
+      <operator activated="false" class="select_attributes" compatibility="7.6.001" expanded="true" height="82" name="Select (3)" width="90" x="45" y="340">
+        <parameter key="attribute_filter_type" value="regular_expression"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="regular_expression" value="(AAindex_ARGP820101_min15)| (AAindex_ARGP820101_max5)| (AAindex_ARGP820101_max10)| (AAindex_ARGP820101_max15)| (AAindex_BULH740101_min15)| (AAindex_BULH740101_max10)| (AAindex_BULH740101_max15)| (AAindex_CHAM820102_avg)| (AAindex_CHAM820102_min5)| (AAindex_CHAM820102_min10)| (AAindex_CHAM820102_min15)| (AAindex_CHAM820102_max5)| (AAindex_CHAM820102_max10)| (AAindex_CIDH920105_avg)| (AAindex_EISD840101_avg)| (AAindex_EISD840101_min5)| (AAindex_EISD840101_min10)| (AAindex_EISD840101_min15)| (AAindex_EISD840101_max15)| (AAindex_EISD860101_min15)| (AAindex_EISD860101_max5)| (AAindex_EISD860101_max15)| (AAindex_EISD860102_min5)| (AAindex_EISD860102_min10)| (AAindex_EISD860102_min15)| (AAindex_EISD860102_max5)| (AAindex_EISD860103_avg)| (AAindex_EISD860103_min5)| (AAindex_EISD860103_min15)| (AAindex_EISD860103_max5)| (AAindex_EISD860103_max10)| (AAindex_EISD860103_max15)| (AAindex_FAUJ830101_min5)| (AAindex_FAUJ830101_max5)| (AAindex_GUYH850101_min5)| (AAindex_GUYH850101_min10)| (AAindex_GUYH850101_min15)| (AAindex_GUYH850101_max10)| (AAindex_GUYH850101_max15)| (AAindex_HOPT810101_avg)| (AAindex_HOPT810101_min5)| (AAindex_HOPT810101_min10)| (AAindex_HOPT810101_max5)| (AAindex_HOPT810101_max10)| (AAindex_HOPT810101_max15)| (AAindex_JANJ790102_min15)| (AAindex_JANJ790102_max10)| (AAindex_JANJ790102_max15)| (AAindex_JOND750101_min15)| (AAindex_JOND750101_max15)| (AAindex_KYTJ820101_min5)| (AAindex_KYTJ820101_min15)| (AAindex_KYTJ820101_max10)| (AAindex_LAWE840101_min5)| (AAindex_LAWE840101_max5)| (AAindex_LEVM760101_min5)| (AAindex_LEVM760101_min10)| (AAindex_LEVM760101_max5)| (AAindex_LEVM760101_max10)| (AAindex_MANP780101_min15)| (AAindex_MANP780101_max5)| (AAindex_MANP780101_max10)| (AAindex_MIYS850101_avg)| (AAindex_MIYS850101_min5)| (AAindex_MIYS850101_min10)| (AAindex_MIYS850101_min15)| (AAindex_MIYS850101_max10)| (AAindex_MIYS850101_max15)| (AAindex_NOZY710101_avg)| (AAindex_NOZY710101_min10)| (AAindex_NOZY710101_max10)| (AAindex_NOZY710101_max15)| (AAindex_OOBM770101_avg)| (AAindex_OOBM770101_min10)| (AAindex_OOBM770101_max5)| (AAindex_OOBM770102_min5)| (AAindex_OOBM770102_min15)| (AAindex_OOBM770102_max15)| (AAindex_OOBM770103_avg)| (AAindex_OOBM770103_min5)| (AAindex_OOBM770103_min15)| (AAindex_OOBM770103_max5)| (AAindex_OOBM770103_max10)| (AAindex_OOBM770104_avg)| (AAindex_OOBM770104_min10)| (AAindex_OOBM770104_max10)| (AAindex_OOBM770104_max15)| (AAindex_OOBM770105_avg)| (AAindex_OOBM770105_min10)| (AAindex_OOBM770105_min15)| (AAindex_OOBM770105_max5)| (AAindex_OOBM850103_avg)| (AAindex_OOBM850103_min5)| (AAindex_OOBM850103_min10)| (AAindex_OOBM850103_min15)| (AAindex_OOBM850103_max5)| (AAindex_OOBM850104_max5)| (AAindex_OOBM850104_max10)| (AAindex_OOBM850104_max15)| (AAindex_PONP800101_avg)| (AAindex_PONP800101_min10)| (AAindex_PONP800101_min15)| (AAindex_PONP800101_max10)| (AAindex_PONP800101_max15)| (AAindex_PONP800102_avg)| (AAindex_PONP800102_min10)| (AAindex_PONP800102_min15)| (AAindex_PONP800103_avg)| (AAindex_PONP800103_min5)| (AAindex_PONP800103_max5)| (AAindex_PONP800103_max15)| (AAindex_PRAM900101_avg)| (AAindex_RADA880101_min10)| (AAindex_RADA880101_min15)| (AAindex_RADA880101_max5)| (AAindex_RADA880101_max10)| (AAindex_RADA880102_min10)| (AAindex_RADA880102_max5)| (AAindex_RADA880102_max10)| (AAindex_RADA880103_avg)| (AAindex_RADA880103_min10)| (AAindex_RADA880103_min15)| (AAindex_RADA880104_avg)| (AAindex_RADA880104_min10)| (AAindex_RADA880104_min15)| (AAindex_RADA880104_max5)| (AAindex_RADA880104_max10)| (AAindex_RADA880105_avg)| (AAindex_RADA880105_max5)| (AAindex_RADA880105_max10)| (AAindex_ROBB790101_avg)| (AAindex_ROBB790101_min5)| (AAindex_ROBB790101_min15)| (AAindex_ROBB790101_max15)| (AAindex_ROSM880101_avg)| (AAindex_ROSM880101_min10)| (AAindex_ROSM880101_max10)| (AAindex_ROSM880102_avg)| (AAindex_ROSM880102_min5)| (AAindex_ROSM880102_min15)| (AAindex_ROSM880102_max5)| (AAindex_ROSM880102_max10)| (AAindex_ROSM880102_max15)| (AAindex_SIMZ760101_avg)| (AAindex_SIMZ760101_max5)| (AAindex_SWER830101_max5)| (AAindex_SWER830101_max10)| (AAindex_WERD780102_avg)| (AAindex_WERD780102_min10)| (AAindex_WERD780102_min15)| (AAindex_WERD780102_max5)| (AAindex_WERD780102_max15)| (AAindex_WERD780103_avg)| (AAindex_WERD780103_min5)| (AAindex_WERD780104_min15)| (AAindex_WERD780104_max10)| (AAindex_WERD780104_max15)| (AAindex_YUTK870101_min10)| (AAindex_YUTK870101_max5)| (AAindex_YUTK870101_max10)| (AAindex_YUTK870102_min5)| (AAindex_YUTK870102_min10)| (AAindex_YUTK870102_max10)| (AAindex_YUTK870102_max15)| (AAindex_YUTK870103_min5)| (AAindex_YUTK870103_min10)| (AAindex_YUTK870103_max5)| (AAindex_YUTK870104_avg)| (AAindex_YUTK870104_min5)| (AAindex_YUTK870104_max5)| (AAindex_ZIMJ680101_min5)| (AAindex_ZIMJ680101_min10)| (AAindex_ZIMJ680101_min15)| (AAindex_ZIMJ680101_max5)| (AAindex_ZIMJ680101_max10)| (AAindex_PONP930101_min15)| (AAindex_PONP930101_max15)| (AAindex_WILM950101_min10)| (AAindex_WILM950101_min15)| (AAindex_WILM950101_max15)| (AAindex_WILM950102_avg)| (AAindex_WILM950102_max5)| (AAindex_WILM950102_max15)| (AAindex_WILM950103_avg)| (AAindex_WILM950103_min5)| (AAindex_WILM950103_max5)| (AAindex_WILM950103_max15)| (AAindex_WILM950104_avg)| (AAindex_WILM950104_min15)| (AAindex_WILM950104_max10)| (AAindex_KUHL950101_avg)| (AAindex_KUHL950101_min15)| (AAindex_KUHL950101_max5)| (AAindex_JURD980101_avg)| (AAindex_JURD980101_min5)| (AAindex_JURD980101_min10)| (AAindex_JURD980101_max15)| (AAindex_WOLR790101_min15)| (AAindex_WOLR790101_max10)| (AAindex_WOLR790101_max15)| (AAindex_KIDA850101_avg)| (AAindex_KIDA850101_min5)| (AAindex_KIDA850101_min10)| (AAindex_KIDA850101_max5)| (AAindex_KIDA850101_max15)| (AAindex_COWR900101_min10)| (AAindex_COWR900101_min15)| (AAindex_COWR900101_max5)| (AAindex_COWR900101_max10)| (AAindex_COWR900101_max15)| (AAindex_BLAS910101_avg)| (AAindex_BLAS910101_min10)| (AAindex_BLAS910101_min15)| (AAindex_BLAS910101_max5)| (AAindex_BLAS910101_max10)| (AAindex_CASG920101_min5)| (AAindex_CASG920101_min15)| (AAindex_ENGD860101_avg)| (AAindex_ENGD860101_max5)| (AAindex_ENGD860101_max10)| (AAindex_ENGD860101_max15)| (AAindex_FASG890101_avg)| (AAindex_FASG890101_min5)| (AAindex_FASG890101_min10)| (AAindex_FASG890101_max5)| (AAindex_FASG890101_max15)| (pI)| (AphilaticIndex)| (InstabilityIndex)| (PRprobability_IUpredL_max_5)| (PRprobability_IUpredL_max_15)| (PRprobability_IUpredL_min_15)| (PRprobability_IUpredL_avg)| (PRprobability_IUpredS_max_5)| (PRprobability_IUpredS_max_15)| (PRprobability_IUpredS_min_5)| (PRprobability_IUpredS_min_10)| (PRSegmentComposition_IUPredL_0_1-5)| (PRSegmentComposition_IUPredL_0_6-10)| (PRSegmentComposition_IUPredL_0_11-15)| (PRSegmentComposition_IUPredL_1_1-5)| (PRSegmentComposition_IUPredL_1_11-15)| (PRSegmentComposition_IUPredS_0_1-5)| (PRSegmentComposition_IUPredS_0_11-15)| (PRSegmentComposition_IUPredS_1_1-5)| (PRSegmentComposition_IUPredS_1_11-15)| (PRSegmentComposition_Complexity_0_6-10)| (PRSegmentComposition_Complexity_1_1-5)| (PRSegmentComposition_Complexity_1_6-10)| (PRSegmentComposition_Complexity_1_11-15)| (PRSegmentComposition_Complexity_1_&gt;15)| (PRLongestSegment_IUPredL_1)| (PRLongestSegment_Complexity1)| (PRSegmentCount_IUPredL_0_11-15)| (PRSegmentCount_IUPredL_0_&gt;15)| (PRSegmentCount_IUPredL_1_6-10)| (PRSegmentCount_IUPredS_0_11-15)| (PRSegmentCount_IUPredS_0_&gt;15)| (PRSegmentCount_IUPredS_1_1-5)| (PRSegmentCount_IUPredS_1_6-10)| (PRSegmentCount_IUPredS_1_11-15)| (PRSegmentCount_IUPredS_1_&gt;15)| (PRSegmentCount_Complexity_0_6-10)| (PRSegmentCount_Complexity_0_11-15)| (PRSegmentCount_Complexity_1_1-5)|(AAcomp_D)| (AAcomp_C)| (AAcomp_Q)| (AAcomp_E)| (AAcomp_H)| (AAcomp_L)| (AAcomp_M)| (AAcomp_F)| (AAcomp_P)| (AAcomp_S)| (AAcomp_T)| (AAcomp_W)| (AAcomp_Y)| (AAcomp_V)| (AAcomp_AR)| (AAcomp_AH)| (AAcomp_AI)| (AAcomp_AL)| (AAcomp_AK)| (AAcomp_AP)| (AAcomp_AY)| (AAcomp_AV)| (AAcomp_RR)| (AAcomp_RD)| (AAcomp_RC)| (AAcomp_RQ)| (AAcomp_RE)| (AAcomp_RI)| (AAcomp_RL)| (AAcomp_RM)| (AAcomp_RF)| (AAcomp_RP)| (AAcomp_RS)| (AAcomp_RW)| (AAcomp_NA)| (AAcomp_NK)| (AAcomp_NM)| (AAcomp_NF)| (AAcomp_NS)| (AAcomp_NT)| (AAcomp_NW)| (AAcomp_NY)| (AAcomp_NV)| (AAcomp_DR)| (AAcomp_DN)| (AAcomp_DG)| (AAcomp_DI)| (AAcomp_DL)| (AAcomp_DP)| (AAcomp_DW)| (AAcomp_DV)| (AAcomp_CR)| (AAcomp_CD)| (AAcomp_CE)| (AAcomp_CI)| (AAcomp_CF)| (AAcomp_CP)| (AAcomp_CT)| (AAcomp_CW)| (AAcomp_QN)| (AAcomp_QD)| (AAcomp_QC)| (AAcomp_QE)| (AAcomp_QG)| (AAcomp_QH)| (AAcomp_QI)| (AAcomp_QK)| (AAcomp_QM)| (AAcomp_QF)| (AAcomp_QS)| (AAcomp_QY)| (AAcomp_QV)| (AAcomp_EA)| (AAcomp_EN)| (AAcomp_EC)| (AAcomp_EH)| (AAcomp_EL)| (AAcomp_EF)| (AAcomp_EP)| (AAcomp_ES)| (AAcomp_EW)| (AAcomp_EY)| (AAcomp_EV)| (AAcomp_GR)| (AAcomp_GD)| (AAcomp_GE)| (AAcomp_GG)| (AAcomp_GH)| (AAcomp_GL)| (AAcomp_GK)| (AAcomp_GM)| (AAcomp_GS)| (AAcomp_GT)| (AAcomp_GW)| (AAcomp_GY)| (AAcomp_GV)| (AAcomp_HE)| (AAcomp_HG)| (AAcomp_HH)| (AAcomp_HI)| (AAcomp_HK)| (AAcomp_HM)| (AAcomp_HP)| (AAcomp_HS)| (AAcomp_HT)| (AAcomp_HY)| (AAcomp_HV)| (AAcomp_ID)| (AAcomp_IC)| (AAcomp_IG)| (AAcomp_II)| (AAcomp_IL)| (AAcomp_IS)| (AAcomp_IV)| (AAcomp_LA)| (AAcomp_LR)| (AAcomp_LN)| (AAcomp_LC)| (AAcomp_LE)| (AAcomp_LI)| (AAcomp_LK)| (AAcomp_LF)| (AAcomp_LP)| (AAcomp_LY)| (AAcomp_KA)| (AAcomp_KR)| (AAcomp_KN)| (AAcomp_KD)| (AAcomp_KC)| (AAcomp_KQ)| (AAcomp_KI)| (AAcomp_KL)| (AAcomp_KM)| (AAcomp_KF)| (AAcomp_KS)| (AAcomp_KY)| (AAcomp_KV)| (AAcomp_MA)| (AAcomp_MR)| (AAcomp_MC)| (AAcomp_ME)| (AAcomp_MG)| (AAcomp_MI)| (AAcomp_ML)| (AAcomp_MK)| (AAcomp_MF)| (AAcomp_MW)| (AAcomp_FC)| (AAcomp_FQ)| (AAcomp_FP)| (AAcomp_FT)| (AAcomp_FW)| (AAcomp_FY)| (AAcomp_PA)| (AAcomp_PR)| (AAcomp_PN)| (AAcomp_PK)| (AAcomp_PF)| (AAcomp_PP)| (AAcomp_PW)| (AAcomp_PV)| (AAcomp_SA)| (AAcomp_SD)| (AAcomp_SC)| (AAcomp_SH)| (AAcomp_SL)| (AAcomp_SK)| (AAcomp_SF)| (AAcomp_ST)| (AAcomp_SW)| (AAcomp_TA)| (AAcomp_TC)| (AAcomp_TQ)| (AAcomp_TE)| (AAcomp_TG)| (AAcomp_TH)| (AAcomp_TM)| (AAcomp_TF)| (AAcomp_TT)| (AAcomp_TV)| (AAcomp_WA)| (AAcomp_WD)| (AAcomp_WC)| (AAcomp_WH)| (AAcomp_WK)| (AAcomp_WM)| (AAcomp_WS)| (AAcomp_WW)| (AAcomp_WY)| (AAcomp_YA)| (AAcomp_YR)| (AAcomp_YD)| (AAcomp_YQ)| (AAcomp_YH)| (AAcomp_YI)| (AAcomp_YM)| (AAcomp_YF)| (AAcomp_YP)| (AAcomp_YY)| (AAcomp_VN)| (AAcomp_VC)| (AAcomp_VQ)| (AAcomp_VE)| (AAcomp_VG)| (AAcomp_VH)| (AAcomp_VL)| (AAcomp_VM)| (AAcomp_VS)| (AAcomp_VW)| (AAcomp_VY)| (AAcomp_VV)"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+      </operator>
+      <operator activated="false" class="concurrency:cross_validation" compatibility="7.6.001" expanded="true" height="145" name="Forest X" width="90" x="45" y="34">
+        <parameter key="split_on_batch_attribute" value="false"/>
+        <parameter key="leave_one_out" value="false"/>
+        <parameter key="number_of_folds" value="3"/>
+        <parameter key="sampling_type" value="automatic"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+        <parameter key="enable_parallel_execution" value="true"/>
+        <process expanded="true">
+          <operator activated="true" class="concurrency:parallel_random_forest" compatibility="7.6.001" expanded="true" height="82" name="Random Forest" width="90" x="112" y="34">
+            <parameter key="number_of_trees" value="10"/>
+            <parameter key="criterion" value="gain_ratio"/>
+            <parameter key="maximal_depth" value="20"/>
+            <parameter key="apply_pruning" value="true"/>
+            <parameter key="confidence" value="0.25"/>
+            <parameter key="apply_prepruning" value="true"/>
+            <parameter key="minimal_gain" value="0.1"/>
+            <parameter key="minimal_leaf_size" value="2"/>
+            <parameter key="minimal_size_for_split" value="4"/>
+            <parameter key="number_of_prepruning_alternatives" value="3"/>
+            <parameter key="guess_subset_ratio" value="true"/>
+            <parameter key="subset_ratio" value="0.2"/>
+            <parameter key="voting_strategy" value="confidence vote"/>
+            <parameter key="use_local_random_seed" value="false"/>
+            <parameter key="local_random_seed" value="1992"/>
+          </operator>
+          <connect from_port="training set" to_op="Random Forest" to_port="training set"/>
+          <connect from_op="Random Forest" from_port="model" to_port="model"/>
+          <portSpacing port="source_training set" spacing="0"/>
+          <portSpacing port="sink_model" spacing="0"/>
+          <portSpacing port="sink_through 1" spacing="0"/>
+        </process>
+        <process expanded="true">
+          <operator activated="true" class="apply_model" compatibility="7.6.001" expanded="true" height="82" name="Apply Model (2)" width="90" x="112" y="34">
+            <list key="application_parameters"/>
+            <parameter key="create_view" value="false"/>
+          </operator>
+          <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="Forest Perf" width="90" x="246" y="34">
+            <parameter key="main_criterion" value="first"/>
+            <parameter key="accuracy" value="true"/>
+            <parameter key="classification_error" value="false"/>
+            <parameter key="kappa" value="false"/>
+            <parameter key="weighted_mean_recall" value="false"/>
+            <parameter key="weighted_mean_precision" value="false"/>
+            <parameter key="spearman_rho" value="false"/>
+            <parameter key="kendall_tau" value="false"/>
+            <parameter key="absolute_error" value="false"/>
+            <parameter key="relative_error" value="false"/>
+            <parameter key="relative_error_lenient" value="false"/>
+            <parameter key="relative_error_strict" value="false"/>
+            <parameter key="normalized_absolute_error" value="false"/>
+            <parameter key="root_mean_squared_error" value="false"/>
+            <parameter key="root_relative_squared_error" value="false"/>
+            <parameter key="squared_error" value="false"/>
+            <parameter key="correlation" value="false"/>
+            <parameter key="squared_correlation" value="false"/>
+            <parameter key="cross-entropy" value="false"/>
+            <parameter key="margin" value="false"/>
+            <parameter key="soft_margin_loss" value="false"/>
+            <parameter key="logistic_loss" value="false"/>
+            <parameter key="skip_undefined_labels" value="true"/>
+            <parameter key="use_example_weights" value="true"/>
+            <list key="class_weights"/>
+          </operator>
+          <connect from_port="model" to_op="Apply Model (2)" to_port="model"/>
+          <connect from_port="test set" to_op="Apply Model (2)" to_port="unlabelled data"/>
+          <connect from_op="Apply Model (2)" from_port="labelled data" to_op="Forest Perf" to_port="labelled data"/>
+          <connect from_op="Forest Perf" from_port="performance" to_port="performance 1"/>
+          <portSpacing port="source_model" spacing="0"/>
+          <portSpacing port="source_test set" spacing="0"/>
+          <portSpacing port="source_through 1" spacing="0"/>
+          <portSpacing port="sink_test set results" spacing="0"/>
+          <portSpacing port="sink_performance 1" spacing="0"/>
+          <portSpacing port="sink_performance 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="false" class="optimize_parameters_grid" compatibility="7.6.001" expanded="true" height="103" name="Optimize Parameters (Grid)" width="90" x="246" y="238">
+        <list key="parameters">
+          <parameter key="GBT (6).learning_rate" value="[0.03;0.5;4;logarithmic]"/>
+        </list>
+        <parameter key="error_handling" value="fail on error"/>
+        <process expanded="true">
+          <operator activated="true" class="concurrency:cross_validation" compatibility="7.6.001" expanded="true" height="145" name="GBT (5)" width="90" x="313" y="34">
+            <parameter key="split_on_batch_attribute" value="false"/>
+            <parameter key="leave_one_out" value="false"/>
+            <parameter key="number_of_folds" value="3"/>
+            <parameter key="sampling_type" value="automatic"/>
+            <parameter key="use_local_random_seed" value="true"/>
+            <parameter key="local_random_seed" value="1994"/>
+            <parameter key="enable_parallel_execution" value="true"/>
+            <process expanded="true">
+              <operator activated="true" class="h2o:gradient_boosted_trees" compatibility="7.6.001" expanded="true" height="103" name="GBT (6)" width="90" x="112" y="34">
+                <parameter key="number_of_trees" value="20"/>
+                <parameter key="reproducible" value="false"/>
+                <parameter key="maximum_number_of_threads" value="4"/>
+                <parameter key="use_local_random_seed" value="false"/>
+                <parameter key="local_random_seed" value="1992"/>
+                <parameter key="maximal_depth" value="5"/>
+                <parameter key="min_rows" value="10.0"/>
+                <parameter key="min_split_improvement" value="0.0"/>
+                <parameter key="number_of_bins" value="20"/>
+                <parameter key="learning_rate" value="0.5"/>
+                <parameter key="sample_rate" value="1.0"/>
+                <parameter key="distribution" value="AUTO"/>
+                <parameter key="early_stopping" value="false"/>
+                <parameter key="stopping_rounds" value="1"/>
+                <parameter key="stopping_metric" value="AUTO"/>
+                <parameter key="stopping_tolerance" value="0.001"/>
+                <parameter key="max_runtime_seconds" value="0"/>
+                <list key="expert_parameters"/>
+              </operator>
+              <connect from_port="training set" to_op="GBT (6)" to_port="training set"/>
+              <connect from_op="GBT (6)" from_port="model" to_port="model"/>
+              <portSpacing port="source_training set" spacing="0"/>
+              <portSpacing port="sink_model" spacing="0"/>
+              <portSpacing port="sink_through 1" spacing="0"/>
+            </process>
+            <process expanded="true">
+              <operator activated="true" class="apply_model" compatibility="7.6.001" expanded="true" height="82" name="Apply Model (5)" width="90" x="112" y="34">
+                <list key="application_parameters"/>
+                <parameter key="create_view" value="false"/>
+              </operator>
+              <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="GBT perf (3)" width="90" x="246" y="34">
+                <parameter key="main_criterion" value="first"/>
+                <parameter key="accuracy" value="true"/>
+                <parameter key="classification_error" value="false"/>
+                <parameter key="kappa" value="false"/>
+                <parameter key="weighted_mean_recall" value="false"/>
+                <parameter key="weighted_mean_precision" value="false"/>
+                <parameter key="spearman_rho" value="false"/>
+                <parameter key="kendall_tau" value="false"/>
+                <parameter key="absolute_error" value="false"/>
+                <parameter key="relative_error" value="false"/>
+                <parameter key="relative_error_lenient" value="false"/>
+                <parameter key="relative_error_strict" value="false"/>
+                <parameter key="normalized_absolute_error" value="false"/>
+                <parameter key="root_mean_squared_error" value="false"/>
+                <parameter key="root_relative_squared_error" value="false"/>
+                <parameter key="squared_error" value="false"/>
+                <parameter key="correlation" value="false"/>
+                <parameter key="squared_correlation" value="false"/>
+                <parameter key="cross-entropy" value="false"/>
+                <parameter key="margin" value="false"/>
+                <parameter key="soft_margin_loss" value="false"/>
+                <parameter key="logistic_loss" value="false"/>
+                <parameter key="skip_undefined_labels" value="true"/>
+                <parameter key="use_example_weights" value="true"/>
+                <list key="class_weights"/>
+              </operator>
+              <connect from_port="model" to_op="Apply Model (5)" to_port="model"/>
+              <connect from_port="test set" to_op="Apply Model (5)" to_port="unlabelled data"/>
+              <connect from_op="Apply Model (5)" from_port="labelled data" to_op="GBT perf (3)" to_port="labelled data"/>
+              <connect from_op="GBT perf (3)" from_port="performance" to_port="performance 1"/>
+              <portSpacing port="source_model" spacing="0"/>
+              <portSpacing port="source_test set" spacing="0"/>
+              <portSpacing port="source_through 1" spacing="0"/>
+              <portSpacing port="sink_test set results" spacing="0"/>
+              <portSpacing port="sink_performance 1" spacing="0"/>
+              <portSpacing port="sink_performance 2" spacing="0"/>
+            </process>
+          </operator>
+          <connect from_port="input 1" to_op="GBT (5)" to_port="example set"/>
+          <connect from_op="GBT (5)" from_port="performance 1" to_port="performance"/>
+          <portSpacing port="source_input 1" spacing="0"/>
+          <portSpacing port="source_input 2" spacing="0"/>
+          <portSpacing port="sink_performance" spacing="0"/>
+          <portSpacing port="sink_result 1" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="select_attributes" compatibility="7.6.001" expanded="true" height="82" name="Select (4)" width="90" x="45" y="187">
+        <parameter key="attribute_filter_type" value="regular_expression"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="regular_expression" value="(AAcomp_.)|(AAi.*avg)|([^A].*)"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+      </operator>
+      <operator activated="true" class="multiply" compatibility="7.6.001" expanded="true" height="103" name="Multiply" width="90" x="179" y="136"/>
+      <operator activated="false" class="concurrency:cross_validation" compatibility="7.6.001" expanded="true" height="145" name="Stack" width="90" x="313" y="340">
+        <parameter key="split_on_batch_attribute" value="false"/>
+        <parameter key="leave_one_out" value="false"/>
+        <parameter key="number_of_folds" value="3"/>
+        <parameter key="sampling_type" value="automatic"/>
+        <parameter key="use_local_random_seed" value="true"/>
+        <parameter key="local_random_seed" value="1997"/>
+        <parameter key="enable_parallel_execution" value="true"/>
+        <process expanded="true">
+          <operator activated="true" class="stacking" compatibility="7.6.001" expanded="true" height="68" name="Stacking" width="90" x="112" y="34">
+            <parameter key="keep_all_attributes" value="true"/>
+            <process expanded="true">
+              <operator activated="false" class="remove_correlated_attributes" compatibility="7.6.001" expanded="true" height="82" name="Remove Correlated Attributes (2)" width="90" x="45" y="544">
+                <parameter key="correlation" value="0.5"/>
+                <parameter key="filter_relation" value="greater"/>
+                <parameter key="attribute_order" value="original"/>
+                <parameter key="use_absolute_correlation" value="true"/>
+                <parameter key="use_local_random_seed" value="true"/>
+                <parameter key="local_random_seed" value="1993"/>
+              </operator>
+              <operator activated="true" class="select_attributes" compatibility="7.6.001" expanded="true" height="82" name="Select (5)" width="90" x="45" y="34">
+                <parameter key="attribute_filter_type" value="regular_expression"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="regular_expression" value="(AAcomp_.)|([^A].*)"/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+              </operator>
+              <operator activated="true" class="h2o:gradient_boosted_trees" compatibility="7.6.001" expanded="true" height="103" name="GBT (7)" width="90" x="179" y="34">
+                <parameter key="number_of_trees" value="23"/>
+                <parameter key="reproducible" value="false"/>
+                <parameter key="maximum_number_of_threads" value="4"/>
+                <parameter key="use_local_random_seed" value="false"/>
+                <parameter key="local_random_seed" value="1992"/>
+                <parameter key="maximal_depth" value="3"/>
+                <parameter key="min_rows" value="10.0"/>
+                <parameter key="min_split_improvement" value="0.0"/>
+                <parameter key="number_of_bins" value="20"/>
+                <parameter key="learning_rate" value="0.1"/>
+                <parameter key="sample_rate" value="1.0"/>
+                <parameter key="distribution" value="AUTO"/>
+                <parameter key="early_stopping" value="false"/>
+                <parameter key="stopping_rounds" value="1"/>
+                <parameter key="stopping_metric" value="AUTO"/>
+                <parameter key="stopping_tolerance" value="0.001"/>
+                <parameter key="max_runtime_seconds" value="0"/>
+                <list key="expert_parameters"/>
+              </operator>
+              <operator activated="true" class="select_attributes" compatibility="7.6.001" expanded="true" height="82" name="Select (6)" width="90" x="45" y="136">
+                <parameter key="attribute_filter_type" value="regular_expression"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="regular_expression" value="AAi.*"/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+              </operator>
+              <operator activated="true" class="h2o:gradient_boosted_trees" compatibility="7.6.001" expanded="true" height="103" name="GBT (3)" width="90" x="179" y="136">
+                <parameter key="number_of_trees" value="23"/>
+                <parameter key="reproducible" value="false"/>
+                <parameter key="maximum_number_of_threads" value="4"/>
+                <parameter key="use_local_random_seed" value="false"/>
+                <parameter key="local_random_seed" value="1992"/>
+                <parameter key="maximal_depth" value="3"/>
+                <parameter key="min_rows" value="10.0"/>
+                <parameter key="min_split_improvement" value="0.0"/>
+                <parameter key="number_of_bins" value="20"/>
+                <parameter key="learning_rate" value="0.1"/>
+                <parameter key="sample_rate" value="1.0"/>
+                <parameter key="distribution" value="AUTO"/>
+                <parameter key="early_stopping" value="false"/>
+                <parameter key="stopping_rounds" value="1"/>
+                <parameter key="stopping_metric" value="AUTO"/>
+                <parameter key="stopping_tolerance" value="0.001"/>
+                <parameter key="max_runtime_seconds" value="0"/>
+                <list key="expert_parameters"/>
+              </operator>
+              <operator activated="true" class="select_attributes" compatibility="7.6.001" expanded="true" height="82" name="Select (7)" width="90" x="45" y="289">
+                <parameter key="attribute_filter_type" value="regular_expression"/>
+                <parameter key="attribute" value=""/>
+                <parameter key="attributes" value=""/>
+                <parameter key="regular_expression" value="AAcomp.*"/>
+                <parameter key="use_except_expression" value="false"/>
+                <parameter key="value_type" value="attribute_value"/>
+                <parameter key="use_value_type_exception" value="false"/>
+                <parameter key="except_value_type" value="time"/>
+                <parameter key="block_type" value="attribute_block"/>
+                <parameter key="use_block_type_exception" value="false"/>
+                <parameter key="except_block_type" value="value_matrix_row_start"/>
+                <parameter key="invert_selection" value="false"/>
+                <parameter key="include_special_attributes" value="false"/>
+              </operator>
+              <operator activated="true" class="h2o:gradient_boosted_trees" compatibility="7.6.001" expanded="true" height="103" name="GBT (4)" width="90" x="179" y="289">
+                <parameter key="number_of_trees" value="23"/>
+                <parameter key="reproducible" value="false"/>
+                <parameter key="maximum_number_of_threads" value="4"/>
+                <parameter key="use_local_random_seed" value="false"/>
+                <parameter key="local_random_seed" value="1992"/>
+                <parameter key="maximal_depth" value="3"/>
+                <parameter key="min_rows" value="10.0"/>
+                <parameter key="min_split_improvement" value="0.0"/>
+                <parameter key="number_of_bins" value="20"/>
+                <parameter key="learning_rate" value="0.1"/>
+                <parameter key="sample_rate" value="1.0"/>
+                <parameter key="distribution" value="AUTO"/>
+                <parameter key="early_stopping" value="false"/>
+                <parameter key="stopping_rounds" value="1"/>
+                <parameter key="stopping_metric" value="AUTO"/>
+                <parameter key="stopping_tolerance" value="0.001"/>
+                <parameter key="max_runtime_seconds" value="0"/>
+                <list key="expert_parameters"/>
+              </operator>
+              <connect from_port="training set 1" to_op="Select (5)" to_port="example set input"/>
+              <connect from_port="training set 2" to_op="Select (6)" to_port="example set input"/>
+              <connect from_port="training set 3" to_op="Select (7)" to_port="example set input"/>
+              <connect from_op="Select (5)" from_port="example set output" to_op="GBT (7)" to_port="training set"/>
+              <connect from_op="GBT (7)" from_port="model" to_port="base model 1"/>
+              <connect from_op="Select (6)" from_port="example set output" to_op="GBT (3)" to_port="training set"/>
+              <connect from_op="GBT (3)" from_port="model" to_port="base model 2"/>
+              <connect from_op="Select (7)" from_port="example set output" to_op="GBT (4)" to_port="training set"/>
+              <connect from_op="GBT (4)" from_port="model" to_port="base model 3"/>
+              <portSpacing port="source_training set 1" spacing="0"/>
+              <portSpacing port="source_training set 2" spacing="0"/>
+              <portSpacing port="source_training set 3" spacing="0"/>
+              <portSpacing port="source_training set 4" spacing="0"/>
+              <portSpacing port="sink_base model 1" spacing="0"/>
+              <portSpacing port="sink_base model 2" spacing="0"/>
+              <portSpacing port="sink_base model 3" spacing="0"/>
+              <portSpacing port="sink_base model 4" spacing="0"/>
+            </process>
+            <process expanded="true">
+              <operator activated="true" class="h2o:gradient_boosted_trees" compatibility="7.6.001" expanded="true" height="103" name="GBT (8)" width="90" x="112" y="34">
+                <parameter key="number_of_trees" value="23"/>
+                <parameter key="reproducible" value="false"/>
+                <parameter key="maximum_number_of_threads" value="4"/>
+                <parameter key="use_local_random_seed" value="false"/>
+                <parameter key="local_random_seed" value="1992"/>
+                <parameter key="maximal_depth" value="3"/>
+                <parameter key="min_rows" value="10.0"/>
+                <parameter key="min_split_improvement" value="0.0"/>
+                <parameter key="number_of_bins" value="20"/>
+                <parameter key="learning_rate" value="0.1"/>
+                <parameter key="sample_rate" value="1.0"/>
+                <parameter key="distribution" value="AUTO"/>
+                <parameter key="early_stopping" value="false"/>
+                <parameter key="stopping_rounds" value="1"/>
+                <parameter key="stopping_metric" value="AUTO"/>
+                <parameter key="stopping_tolerance" value="0.001"/>
+                <parameter key="max_runtime_seconds" value="0"/>
+                <list key="expert_parameters"/>
+              </operator>
+              <connect from_port="stacking examples" to_op="GBT (8)" to_port="training set"/>
+              <connect from_op="GBT (8)" from_port="model" to_port="stacking model"/>
+              <portSpacing port="source_stacking examples" spacing="0"/>
+              <portSpacing port="sink_stacking model" spacing="0"/>
+            </process>
+          </operator>
+          <connect from_port="training set" to_op="Stacking" to_port="training set"/>
+          <connect from_op="Stacking" from_port="model" to_port="model"/>
+          <portSpacing port="source_training set" spacing="0"/>
+          <portSpacing port="sink_model" spacing="0"/>
+          <portSpacing port="sink_through 1" spacing="0"/>
+        </process>
+        <process expanded="true">
+          <operator activated="true" class="apply_model" compatibility="7.6.001" expanded="true" height="82" name="Apply Model (3)" width="90" x="112" y="34">
+            <list key="application_parameters"/>
+            <parameter key="create_view" value="false"/>
+          </operator>
+          <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="Stack Perf" width="90" x="246" y="34">
+            <parameter key="main_criterion" value="first"/>
+            <parameter key="accuracy" value="true"/>
+            <parameter key="classification_error" value="false"/>
+            <parameter key="kappa" value="false"/>
+            <parameter key="weighted_mean_recall" value="false"/>
+            <parameter key="weighted_mean_precision" value="false"/>
+            <parameter key="spearman_rho" value="false"/>
+            <parameter key="kendall_tau" value="false"/>
+            <parameter key="absolute_error" value="false"/>
+            <parameter key="relative_error" value="false"/>
+            <parameter key="relative_error_lenient" value="false"/>
+            <parameter key="relative_error_strict" value="false"/>
+            <parameter key="normalized_absolute_error" value="false"/>
+            <parameter key="root_mean_squared_error" value="false"/>
+            <parameter key="root_relative_squared_error" value="false"/>
+            <parameter key="squared_error" value="false"/>
+            <parameter key="correlation" value="false"/>
+            <parameter key="squared_correlation" value="false"/>
+            <parameter key="cross-entropy" value="false"/>
+            <parameter key="margin" value="false"/>
+            <parameter key="soft_margin_loss" value="false"/>
+            <parameter key="logistic_loss" value="false"/>
+            <parameter key="skip_undefined_labels" value="true"/>
+            <parameter key="use_example_weights" value="true"/>
+            <list key="class_weights"/>
+          </operator>
+          <connect from_port="model" to_op="Apply Model (3)" to_port="model"/>
+          <connect from_port="test set" to_op="Apply Model (3)" to_port="unlabelled data"/>
+          <connect from_op="Apply Model (3)" from_port="labelled data" to_op="Stack Perf" to_port="labelled data"/>
+          <connect from_op="Stack Perf" from_port="performance" to_port="performance 1"/>
+          <portSpacing port="source_model" spacing="0"/>
+          <portSpacing port="source_test set" spacing="0"/>
+          <portSpacing port="source_through 1" spacing="0"/>
+          <portSpacing port="sink_test set results" spacing="0"/>
+          <portSpacing port="sink_performance 1" spacing="0"/>
+          <portSpacing port="sink_performance 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="concurrency:cross_validation" compatibility="7.6.001" expanded="true" height="145" name="GBT" width="90" x="380" y="34">
+        <parameter key="split_on_batch_attribute" value="false"/>
+        <parameter key="leave_one_out" value="false"/>
+        <parameter key="number_of_folds" value="5"/>
+        <parameter key="sampling_type" value="automatic"/>
+        <parameter key="use_local_random_seed" value="true"/>
+        <parameter key="local_random_seed" value="1997"/>
+        <parameter key="enable_parallel_execution" value="true"/>
+        <process expanded="true">
+          <operator activated="true" class="h2o:gradient_boosted_trees" compatibility="7.6.001" expanded="true" height="103" name="GBT (2)" width="90" x="112" y="34">
+            <parameter key="number_of_trees" value="23"/>
+            <parameter key="reproducible" value="false"/>
+            <parameter key="maximum_number_of_threads" value="4"/>
+            <parameter key="use_local_random_seed" value="false"/>
+            <parameter key="local_random_seed" value="1992"/>
+            <parameter key="maximal_depth" value="5"/>
+            <parameter key="min_rows" value="10.0"/>
+            <parameter key="min_split_improvement" value="0.0"/>
+            <parameter key="number_of_bins" value="20"/>
+            <parameter key="learning_rate" value="0.1"/>
+            <parameter key="sample_rate" value="1.0"/>
+            <parameter key="distribution" value="AUTO"/>
+            <parameter key="early_stopping" value="false"/>
+            <parameter key="stopping_rounds" value="1"/>
+            <parameter key="stopping_metric" value="AUTO"/>
+            <parameter key="stopping_tolerance" value="0.001"/>
+            <parameter key="max_runtime_seconds" value="0"/>
+            <list key="expert_parameters"/>
+          </operator>
+          <connect from_port="training set" to_op="GBT (2)" to_port="training set"/>
+          <connect from_op="GBT (2)" from_port="model" to_port="model"/>
+          <portSpacing port="source_training set" spacing="0"/>
+          <portSpacing port="sink_model" spacing="0"/>
+          <portSpacing port="sink_through 1" spacing="0"/>
+        </process>
+        <process expanded="true">
+          <operator activated="true" class="apply_model" compatibility="7.6.001" expanded="true" height="82" name="Apply Model (4)" width="90" x="112" y="34">
+            <list key="application_parameters"/>
+            <parameter key="create_view" value="false"/>
+          </operator>
+          <operator activated="true" class="performance_classification" compatibility="7.6.001" expanded="true" height="82" name="GBT perf" width="90" x="246" y="34">
+            <parameter key="main_criterion" value="first"/>
+            <parameter key="accuracy" value="true"/>
+            <parameter key="classification_error" value="false"/>
+            <parameter key="kappa" value="false"/>
+            <parameter key="weighted_mean_recall" value="false"/>
+            <parameter key="weighted_mean_precision" value="false"/>
+            <parameter key="spearman_rho" value="false"/>
+            <parameter key="kendall_tau" value="false"/>
+            <parameter key="absolute_error" value="false"/>
+            <parameter key="relative_error" value="false"/>
+            <parameter key="relative_error_lenient" value="false"/>
+            <parameter key="relative_error_strict" value="false"/>
+            <parameter key="normalized_absolute_error" value="false"/>
+            <parameter key="root_mean_squared_error" value="false"/>
+            <parameter key="root_relative_squared_error" value="false"/>
+            <parameter key="squared_error" value="false"/>
+            <parameter key="correlation" value="false"/>
+            <parameter key="squared_correlation" value="false"/>
+            <parameter key="cross-entropy" value="false"/>
+            <parameter key="margin" value="false"/>
+            <parameter key="soft_margin_loss" value="false"/>
+            <parameter key="logistic_loss" value="false"/>
+            <parameter key="skip_undefined_labels" value="true"/>
+            <parameter key="use_example_weights" value="true"/>
+            <list key="class_weights"/>
+          </operator>
+          <connect from_port="model" to_op="Apply Model (4)" to_port="model"/>
+          <connect from_port="test set" to_op="Apply Model (4)" to_port="unlabelled data"/>
+          <connect from_op="Apply Model (4)" from_port="labelled data" to_op="GBT perf" to_port="labelled data"/>
+          <connect from_op="GBT perf" from_port="performance" to_port="performance 1"/>
+          <portSpacing port="source_model" spacing="0"/>
+          <portSpacing port="source_test set" spacing="0"/>
+          <portSpacing port="source_through 1" spacing="0"/>
+          <portSpacing port="sink_test set results" spacing="0"/>
+          <portSpacing port="sink_performance 1" spacing="0"/>
+          <portSpacing port="sink_performance 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="7.6.001" expanded="true" height="68" name="Retrieve (2)" width="90" x="447" y="238"/>
+      <connect from_op="Retrieve" from_port="output" to_op="Set Role (2)" to_port="example set input"/>
+      <connect from_op="Set Role (2)" from_port="example set output" to_op="Select (4)" to_port="example set input"/>
+      <connect from_op="Select (4)" from_port="example set output" to_op="Multiply" to_port="input"/>
+      <connect from_op="Multiply" from_port="output 1" to_op="GBT" to_port="example set"/>
+      <connect from_op="Multiply" from_port="output 2" to_port="result 2"/>
+      <connect from_op="GBT" from_port="performance 1" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+    </process>
+  </operator>
+</process>
